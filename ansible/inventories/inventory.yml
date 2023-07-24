@@ -1,0 +1,23 @@
+---
+all:
+    hosts:
+		web01: 
+			ansible_host: (ip address)private
+			ansible_user: 
+			ansible_ssh_private_key_file: clientkey.pem
+
+	children:
+		webservers:
+			hosts:
+				web01:
+				web02:
+		dbservers:
+			hosts:
+				db01:
+		db_oregon:
+			children:
+				webservers:
+				dbservers:
+			vars:
+				ansible_user:
+				ansible_ssh_private_key_file:
